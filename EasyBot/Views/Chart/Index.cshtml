@@ -1,0 +1,49 @@
+﻿@*@{ Html.RenderPartial(MVC.Shared.Views.Partial._Chart); }*@
+@section scripts{
+    @{Html.RenderPartial(MVC.Shared.Views.Partial._Chart);}
+
+    <script>
+  $(function() {
+    $("#tabs").tabs();
+  });
+    </script>
+}
+
+@{ 
+    ViewBag.RightPanelTitle = "Signals";
+}
+
+@section rightpanel{
+<ul id="signals"></ul>
+}
+
+<div id="settings">
+    @*<select id="instruments"></select>
+
+    <select id="timeFrames">
+        @foreach (var timeFrame in Enum.GetNames(typeof(EasyBot.Models.Enums.TimeFrame)))
+        {
+            <option value="@timeFrame">@timeFrame</option>
+        }
+    </select>
+
+    <label for="pips">Pips:</label>
+    <input id="pips" name="pips">*@
+</div>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Chart</a></li>
+        <li><a href="#tabs-2">+</a></li>
+    </ul>
+    <div id="tabs-1">
+        <div id="chart"></div>
+        <br />
+        <div>
+            <ul id="container"></ul>
+        </div>
+    </div>
+    <div id="tabs-2">
+
+    </div>
+</div>

@@ -1,0 +1,294 @@
+﻿@Styles.Render("~/Content/jquery-ui")
+@Styles.Render("~/Content/chart")
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jquery-ui")
+@Scripts.Render("~/bundles/zingchart")
+@Scripts.Render("~/bundles/signalr")
+<script>zingchart.MODULESDIR = "/Scripts/vendors/zingchart/modules/";</script>
+
+@using EasyBot.Common.Extensions
+
+<script src="~/signalr/hubs"></script>
+<script>
+    var subscribeOnHistoryUrl = '@Url.Action(MVC.Instrument.ActionNames.SubscribeOnHistory, MVC.Instrument.Name)';
+    var getInstrumentsUrl = '@Url.Action(MVC.Instrument.ActionNames.GetIntruments, MVC.Instrument.Name)';
+    var setInstrumentsSettingsUrl = '@Url.Action(MVC.Instrument.ActionNames.SetInstrumentsSettings, MVC.Instrument.Name)';
+    var timeFrames = @Html.Raw(EnumExtensions.GetJsArray(typeof(EasyBot.Models.Enums.TimeFrame)));
+
+    //var instruments = $('#instruments');
+    //var timeFrames = $('#timeFrames').selectmenu();
+    //var pips = $('#pips').spinner({min: 1, max: 100});
+
+    var signalTypes = {
+        '0': 'Put',
+        '1': 'Call'
+    }
+
+    var timeFrame = {
+        'M1': 1000*60,
+        'M5': 1000*60*5,
+        'M15': 1000*60*15,
+        'M30': 1000*60*30,
+        'H1': 1000*60*60
+    }
+
+    var instrumentsPanel = null;
+
+    var signalR = new signalR();
+
+    signalR.getClient().historyUpdate = function (data) {
+        drawChart(data.Symbol, data.Candles, timeFrame[instrumentsPanel.getCurrentTimeFrame()]);
+    };
+
+    signalR.getClient().risedSignal = function (data) {
+        $('#signals').append('<li>Signal: Symbol: ' + data.Symbol + ', Type: ' + signalTypes[data.Type] + ' </li>');
+    };
+    signalR.getClient().errorOccured = function (data) {
+        alert('server error occured for ' + data);
+    };
+
+    $(document).ready(function () {
+        signalR.startDone(function () {
+            init();
+        });
+    });
+
+    @*function getInstrumentSettings() {
+        var currentSymbol = instruments.val();
+        return $.ajax({
+            url: '@Url.Action(MVC.Instrument.ActionNames.GetInstrument, MVC.Instrument.Name)',
+            data: { connectionId: signalR.connectionId, symbol: currentSymbol },
+            dataType: 'json'
+        }).done(function (data) {
+            timeFrames.val(data.TimeFrame);
+            pips.spinner('value', data.Range);
+        });
+    }*@
+
+    function retriveInstruments() {
+        @*return $.ajax({
+            url: '@Url.Action(MVC.Instrument.ActionNames.GetIntruments, MVC.Instrument.Name)',
+            data: { connectionId: signalR.connectionId },
+            dataType: 'json'
+        }).done(function (data) {
+            if (data) {
+                for (var i = 0; i < data.length; i++) {
+                    var available = data[i].Available ? '' : ' x';
+                    instruments.append($('<option>')
+                        .val(data[i].Symbol)
+                        .text(data[i].Symbol + available)
+                        .attr('timeFrame', data[i].TimeFrame)
+                        .attr('range', data[i].Range));
+                }
+                instruments.selectmenu();
+            }
+        });*@
+    }
+
+    function subscribeOnHistory() {
+        @*var currentSymbol = instruments.val();
+        var currentTimeFrame = timeFrames.val();
+        return $.ajax({
+            url: '@Url.Action(MVC.Instrument.ActionNames.SubscribeOnHistory, MVC.Instrument.Name)',
+            data: { connectionId: signalR.connectionId, symbol: currentSymbol, timeFrame: currentTimeFrame },
+        });*@
+    }
+
+    function onInstrumentChange() {
+        //getInstrumentSettings().done(function () {
+        //    subscribeOnHistory();
+        //});
+        subscribeOnHistory();
+    }
+
+    function init() {
+        //retriveInstruments().done(function () {
+        //    instruments.selectmenu({
+        //        change: function (event, ui) {
+        //            //ui.item.element.attr('range')
+        //            onInstrumentChange();
+        //        }
+        //    });
+        //    onInstrumentChange();
+        //});
+        var options = {
+            container: '#settings'
+        };
+        instrumentsPanel = new InstrumentsPanel(options);
+    }
+
+    var InstrumentsPanel = function (options) {
+        var instance = this;
+        var container = $(options.container);
+        var data = null;
+        var panel = null;
+        var symbol = null;
+
+        var _render = function(){
+            if (data) {
+                symbol = $('<span class="symbol"></span>');
+                symbol.click(_showPanel);
+                panel = $('<div></div>').addClass('instrument-panel').addClass('row').hide();
+                var h = $('<div class="col-md-12 close-panel"><a href="javascript:void(0);"><img class="close-icon" src="/Content/images/close_icon.png"></img></a></div>');
+                panel.append(h);
+                for (var i = 0; i < data.length; i++) {
+                    if (i == 0){
+                        _setSymbol(data[i].Symbol);
+                    }
+                    var r = $('<div class="col-md-4 instrument-setting"></div>');
+                    var ins = $('<span class="instrument-symbol"></span>').html(data[i].Symbol);
+                    var tf = $('<select></select>');
+                    for (var j = 0; j < timeFrames.length; j++) {
+                        var o = $('<option></option>')
+                            .val(timeFrames[j])
+                            .text(timeFrames[j]);
+                        if(timeFrames[j] == data[i].TimeFrame){
+                            o.attr('selected', 'selected');
+                        }
+                        tf.append(o);
+                    }
+
+                    var p = $('<input></input>');
+
+                    r.append(ins).append(tf).append(p);
+
+                    tf.selectmenu({
+                        width: 80,
+                        change: _timeFrameChangeHandler
+                    });
+                    p.spinner({min: 1, max: 100});
+                    p.spinner('value', data[i].Range);
+
+                    panel.append(r);
+
+                    ins.on('click', _instrumentClickHandler);
+                    p.on('change', _pipsChangeHandler);
+                }
+
+                $('a', h).on('click', function() {
+                    _closePanel(symbol.attr('symbol'));
+                });
+
+                $('.ui-spinner-button', panel).click(function() {
+                    $(this).siblings('input').change();
+                });
+
+                container.append(symbol);
+                container.append(panel);
+            }
+        }
+
+        var _init = function () {
+            _retrieveInstruments().done(function (d) {
+                data = d;
+                _render();
+                _subscribeOnHistory();
+            });
+        }
+
+        var _showPanel = function(){
+            panel.toggle();
+        }
+
+        var _retrieveInstruments = function(){
+            return $.ajax({
+                url: getInstrumentsUrl,
+                data: { connectionId: signalR.connectionId },
+                dataType: 'json'
+            });
+        }
+
+        var _subscribeOnHistory = function(){
+            var currentSymbol = symbol.attr('symbol');
+            var currentTimeFrame = symbol.attr('timeFrame');
+            return $.ajax({
+                url: subscribeOnHistoryUrl,
+                data: { connectionId: signalR.connectionId, symbol: currentSymbol, timeFrame: currentTimeFrame },
+            });
+        }
+
+        var _instrumentClickHandler = function(e){
+            var s = $(this).text();
+            _closePanel(s);
+            panel.hide();
+        }
+
+        var _timeFrameChangeHandler = function(e,ui){
+            var s = $(this).siblings('.instrument-symbol').text();
+            _updateData(s, ui.item.value);
+        };
+
+        var _pipsChangeHandler = function(e){
+            var s = $(this).parent().siblings('.instrument-symbol').text();
+            _updateData(s, null, $(this).val());
+        };
+
+        var _setSymbol = function(s){
+            var t,p;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Symbol == s){
+                    t = data[i].TimeFrame;
+                    p = data[i].Range;
+                    break;
+                }
+            }
+            symbol.html(s + ' | ' + t + ' | ' + p)
+                .attr('symbol', s)
+                .attr('timeFrame', t)
+                .attr('range', p);
+        }
+
+        var _updateData = function(s, t, p){
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Symbol == s){
+                    if (t)
+                        data[i].TimeFrame = t;
+                    if (p)
+                        data[i].Range = p;
+                    data[i].Updated = true;
+                }
+            }
+        }
+
+        var _saveSettings = function(){
+            var updated = [];
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Updated){
+                    updated.push(data[i]);
+                }
+            }
+
+            if (updated.length == 0)
+                return;
+
+            return $.ajax({
+                url: setInstrumentsSettingsUrl,
+                data: {
+                    connectionId: signalR.connectionId,
+                    instruments: updated
+                },
+                type: 'POST',
+                dataType: 'json'
+            });
+        }
+
+        var _closePanel = function(s){
+            _saveSettings();
+            _setSymbol(s);
+            _subscribeOnHistory();
+            panel.hide();
+        }
+
+        instance.getCurrentSymbol = function(){
+            return symbol.attr('symbol');
+        }
+
+        instance.getCurrentTimeFrame = function(){
+            return symbol.attr('timeFrame');
+        }
+
+        _init();
+    }
+</script>
+

@@ -1,0 +1,60 @@
+﻿/* style up the tooltips content */
+.charlab { font-face: helvetica, arial; color: white; margin: 0; }
+.date { font-face: helvetica, arial; font-weight: normal; color: #5AF; margin: 0; font-size: 10px; line-height: 12px; }
+.label { text-align: center;  }
+
+div.instrument-panel{
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    background-color: #f3f3f3;
+    z-index:99;
+    -webkit-box-shadow: 5px 5px 3px 0px rgba(173,168,173,0.27);
+    -moz-box-shadow: 5px 5px 3px 0px rgba(173,168,173,0.27);
+    box-shadow: 5px 5px 3px 0px rgba(173,168,173,0.27);
+    margin: 7px 0 0 4px;
+}
+div.instrument-panel .instrument-setting {
+    width: 250px;
+}
+div.instrument-panel .instrument-setting:hover {
+    background-color: gainsboro;
+}
+div.instrument-panel .instrument-symbol {
+    padding: 0 10px 0 0;
+    font-weight: 600;
+    font-size: 13px;
+    width: 75px;
+    display: inline-block;
+}
+div.instrument-panel .ui-selectmenu-button{
+    width: 80px;
+    top: 10px;
+}
+div.instrument-panel .ui-spinner{
+    width: 40px;
+    padding: 3px 0 2px 0;
+    margin-left: 5px;
+}
+span.symbol{
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f3f3f3;
+    cursor:pointer;
+}
+div#settings{
+    margin: 0 0 10px 0;
+}
+.instrument-symbol{
+    cursor:pointer;
+}
+div.close-panel{
+    position: absolute;
+    right: 0;
+    text-align: right;
+}
+div.close-panel img.close-icon{
+    width: 26px;
+}

@@ -1,0 +1,81 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.form-control{
+    background-color:#f3f3f3;
+}
+.panel{
+    background-color:#f3f3f3;
+}
+
+/* Body */
+body {
+	border-top: 5px solid #7e7e7e;
+	/*background-image: url(../images/bg.png);*/
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+}
+body .wrapper {
+	padding: 0 0 50px 0;
+}
+body header {
+	padding: 20px 0;
+}
+body header .form-search {
+    width: 200px;
+}
+
+.navbar-default {
+    background-color: #f3f3f3;
+    font-size:13px;
+}
+.navbar-default .navbar-nav > li > a{
+    padding: 15px 30px;
+}
+.navbar-default .navbar-nav > li > a{
+    color: #b2b2b2;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color: #7e7e7e;
+}
+.navbar-default .navbar-nav > .active > a {
+    color: #fff;
+    background-color: #29c5e6;
+}
+.navbar-default .navbar-nav.navbar-right > li > a {
+    padding:15px 15px;
+    font-size: 13px;
+}
+
+/* Footer */
+footer {
+  	background: #7e7e7e;
+  	color: #dbdbdb;
+  	font-size: 11px;
+}
+footer .container {			
+	height: 110px;
+	padding: 10px 0;
+}

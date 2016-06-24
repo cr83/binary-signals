@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{790EEFB6-6B20-4694-B142-EBEEF5EF4600}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyBot</RootNamespace>
+    <AssemblyName>EasyBot</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\T4MVCExtensions.3.17.1\lib\net40\T4MVCExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Attributes\AjaxOnlyAttribute.cs" />
+    <Compile Include="Attributes\CustomHandleErrorAttribute.cs" />
+    <Compile Include="BaseController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChartController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstrumentController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstrumentController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManageController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512271608191_InitialCreate.cs" />
+    <Compile Include="Migrations\201512271608191_InitialCreate.Designer.cs">
+      <DependentUpon>201512271608191_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InstrumentRequestModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chart.css" />
+    <Content Include="Content\images\animated-overlay.gif" />
+    <Content Include="Content\images\close_icon.png" />
+    <Content Include="Content\images\code.png" />
+    <Content Include="Content\images\php.png" />
+    <Content Include="Content\images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_50_6eac2c_500x100.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Content\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Content\images\ui-icons_056b93_256x240.png" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Content\images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Content\images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Content\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\ui.jqgrid.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\binarysignals - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\binarysignals - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chart\chart.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Scripts\locale\grid.locale-en.js" />
+    <Content Include="Scripts\locale\grid.locale-ru.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\streaming\signalR.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-animation.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-api-annotations.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-api-rules.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-api.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-area.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-area3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-boxplot.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-bubble.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-bubblepie.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-calendar.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-chord.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-core.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-csv.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-debug.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-dragging.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-errorbars.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-export.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-gauge.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-grid.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-guide.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-hbar.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-hbar3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-hbubble.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-hbullet.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-hfunnel.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-history.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-hscatter.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-legend.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-line.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-line3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-afg.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ago.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-alb.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-and.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-are.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-arg.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-arm.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-aus.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-aut.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-aze.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bdi.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bel.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ben.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bfa.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bgr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bih.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-blr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bol.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bra.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-brn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-btn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-bwa.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-caf.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-can.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-che.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-chl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-chn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-civ.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cmr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cod.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cog.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-col.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cri.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cub.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cyp.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-cze.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-deu.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-dnk.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ecu.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-egy.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-esp.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-espL2.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-est.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-eth.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-fin.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-fra.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-fraL2.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gab.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gbr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gbrL2.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-geojson.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gha.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gmb.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gnb.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-grc.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-gtm.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-guf.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-guy.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-hrv.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-hun.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ind.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-irl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-irn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-isl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-isr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ita.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-jpn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-kaz.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ken.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-kor.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-kwt.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-lao.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-lbr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-lie.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ltu.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-lux.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-lva.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-mda.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-mex.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-mkd.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-mne.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-moz.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-nam.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ncl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-nga.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-nld.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-nor.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-nzl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-omn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-pak.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-pan.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-per.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-phl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-png.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-pol.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-prt.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-qat.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-rou.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-rus.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-rwa.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-sen.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-slv.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-srb.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-sur.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-svk.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-svn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-swe.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-tha.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-tjk.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-topojson.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-tun.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-tur.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-twn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-uga.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ukr.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ury.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ak.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_al.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ar.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_az.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ca.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_co.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ct.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_dc.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_de.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_fl.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ga.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_hi.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ia.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_id.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_il.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_in.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ks.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ky.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_la.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ma.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_md.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_me.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_mi.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_mn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_mo.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ms.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_mt.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_nc.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_nd.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ne.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_nh.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_nj.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_nm.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_nv.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ny.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_oh.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ok.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_or.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_pa.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ri.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_sc.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_sd.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_tn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_tx.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_ut.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_va.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_vt.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_wa.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_wi.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_wv.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-usa_wy.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-uzb.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-ven.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-vnm.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-world-continents.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-world-countries.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-yem.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-zaf.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-zmb.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps-zwe.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-maps.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-navpie.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-nestedpie.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-objects.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-pareto.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-patterns.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-piano.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-pie.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-pie3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-populationpyramid.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-preview.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-r.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-radar.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-range.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-rankflow.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-refresh.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-scalemarkers.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-scatter.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-scroll.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-selection.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-stock.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-toolbar3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-tooltip.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-treemap.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-varea.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-vbar.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-vbar3d.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-vbullet.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-venn.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-vfunnel.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-vline.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-waterfall.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-wordcloud.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-xy.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-yx.min.js" />
+    <Content Include="Scripts\vendors\zingchart\modules\zingchart-zoom.min.js" />
+    <Content Include="Scripts\vendors\zingchart\zingchart.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <None Include="T4MVC.tt.settings.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_OneColumnLayout.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Partial\_Chart.cshtml" />
+    <None Include="T4MVC.tt.hooks.t4" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
+    <Content Include="Views\Shared\_TwoColumnsLayout.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_MainMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Instrument\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyBot.Business\EasyBot.Business.csproj">
+      <Project>{68b6c859-fe9a-4b14-b9ec-6b85a4e9a5d2}</Project>
+      <Name>EasyBot.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyBot.Common\EasyBot.Common.csproj">
+      <Project>{d31cccd9-ea1a-4d8f-b8ce-36946a86c59e}</Project>
+      <Name>EasyBot.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyBot.Models\EasyBot.Models.csproj">
+      <Project>{e1d5f447-4a1d-40f6-ae9f-9a16aeff02b4}</Project>
+      <Name>EasyBot.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyBot.Streaming\EasyBot.Streaming.csproj">
+      <Project>{78b6743d-3839-47c3-8854-59686ea03af6}</Project>
+      <Name>EasyBot.Streaming</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512271608191_InitialCreate.resx">
+      <DependentUpon>201512271608191_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5941</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5941/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

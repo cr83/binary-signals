@@ -1,0 +1,36 @@
+﻿@section scripts{
+    @Scripts.Render("~/bundles/jqgrid")
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#jqGrid").jqGrid({
+            //regional: 'ru',
+            datatype: "json",
+            url: '@Url.Action(MVC.Admin.Actions.ActionNames.GetUsers)',
+            height: 250,
+            width: 780,
+            colModel: [
+                { label: 'Id', name: 'Id', width: 75, key:true },
+                { label: 'User', name: 'UserName', width: 90 },
+                { label: 'Role', name: 'Role', width: 90 },
+                { label: 'Email confirmed', name: 'EmailConfirmed', width: 90 },
+                { label: 'Created on', name: 'CreatedOn', width: 90, formatter: 'date', formatoptions: { newformat: 'd/m/Y H:i:s' } },
+                { label: 'Is trial', name: 'IsTrial', width: 90 },
+                { label: 'Payed before', name: 'PayedBefore', width: 90, formatter: 'date', formatoptions: { newformat: 'd/m/Y H:i:s' } },
+            ],
+            viewrecords: true, // show the current page, data rang and total records on the toolbar
+            caption: "Users",
+            rowNum: 10,
+            loadonce: true,
+            pager: "#jqGridPager",
+        });
+    });
+
+</script>
+}
+
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+
+@Styles.Render("~/Content/jqgrid")

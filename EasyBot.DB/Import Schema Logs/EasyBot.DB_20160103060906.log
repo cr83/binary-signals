@@ -1,0 +1,77 @@
+03.01.2016 21:09:06	This log contains information about the import schema operation into project 'EasyBot.DB' on computer 'SERGEY-PC' by user 'Sergey'.
+03.01.2016 21:09:06	Import of database schema has started.
+03.01.2016 21:09:11	Gathering database options
+03.01.2016 21:09:11	Gathering users
+03.01.2016 21:09:11	Gathering roles
+03.01.2016 21:09:11	Gathering application roles
+03.01.2016 21:09:11	Gathering role memberships
+03.01.2016 21:09:11	Gathering filegroups
+03.01.2016 21:09:11	Gathering full-text catalogs
+03.01.2016 21:09:11	Gathering assemblies
+03.01.2016 21:09:11	Gathering certificates
+03.01.2016 21:09:11	Gathering asymmetric keys
+03.01.2016 21:09:11	Gathering symmetric keys
+03.01.2016 21:09:11	Gathering encrypted symmetric keys
+03.01.2016 21:09:11	Gathering schemas
+03.01.2016 21:09:20	Gathering XML schema collections
+03.01.2016 21:09:20	Gathering user-defined data types
+03.01.2016 21:09:20	Gathering user-defined types
+03.01.2016 21:09:20	Gathering table types
+03.01.2016 21:09:20	Gathering unique keys for table types
+03.01.2016 21:09:20	Gathering primary keys for table types
+03.01.2016 21:09:20	Gathering indexes for table types
+03.01.2016 21:09:20	Gathering check constraints for table types
+03.01.2016 21:09:20	Gathering default constraints for table types
+03.01.2016 21:09:20	Gathering partition functions
+03.01.2016 21:09:20	Gathering partition schemes
+03.01.2016 21:09:20	Gathering functions
+03.01.2016 21:09:20	Gathering encrypted functions
+03.01.2016 21:09:42	Gathering aggregates
+03.01.2016 21:09:42	Gathering procedures
+03.01.2016 21:09:42	Gathering encrypted procedures
+03.01.2016 21:09:42	Gathering tables
+03.01.2016 21:09:43	Gathering primary keys
+03.01.2016 21:10:06	Gathering unique constraints
+03.01.2016 21:10:06	Gathering foreign keys
+03.01.2016 21:10:06	Gathering default constraints
+03.01.2016 21:10:06	Gathering check constraints
+03.01.2016 21:10:06	Gathering views
+03.01.2016 21:10:06	Gathering encrypted views
+03.01.2016 21:10:31	Gathering indexes
+03.01.2016 21:10:31	Gathering statistics
+03.01.2016 21:10:31	Gathering full-text index stoplists
+03.01.2016 21:10:31	Gathering search property lists
+03.01.2016 21:10:31	Gathering search properties
+03.01.2016 21:10:31	Gathering full-text indexes
+03.01.2016 21:10:31	Gathering column store indexes
+03.01.2016 21:10:31	Gathering spatial indexes
+03.01.2016 21:10:31	Gathering XML indexes
+03.01.2016 21:11:09	Gathering Selective XML indexes
+03.01.2016 21:11:09	Gathering encrypted triggers
+03.01.2016 21:11:09	Gathering triggers
+03.01.2016 21:11:09	Gathering encrypted and clr ddl triggers
+03.01.2016 21:11:09	Gathering ddl triggers
+03.01.2016 21:11:09	Gathering synonyms
+03.01.2016 21:11:09	Gathering defaults
+03.01.2016 21:11:09	Gathering data constraint uddt bindings
+03.01.2016 21:11:09	Gathering rules
+03.01.2016 21:11:09	Gathering data constraint uddt bindings
+03.01.2016 21:11:09	Gathering message types
+03.01.2016 21:11:09	Gathering queues
+03.01.2016 21:11:09	Gathering contracts
+03.01.2016 21:11:09	Gathering services
+03.01.2016 21:11:09	Gathering event notifications
+03.01.2016 21:11:09	Gathering remote service bindings
+03.01.2016 21:11:09	Gathering broker priorities
+03.01.2016 21:11:09	Gathering signatures
+03.01.2016 21:11:09	Gathering data compression options
+03.01.2016 21:11:09	Gathering sequence types
+03.01.2016 21:11:09	Gathering extended properties
+03.01.2016 21:11:10	Gathering credentials
+03.01.2016 21:11:10	Gathering logins
+03.01.2016 21:11:10	Gathering server audits
+03.01.2016 21:11:10	Scanning project for duplicate elements
+03.01.2016 21:11:10	Finished duplicate element processing
+03.01.2016 21:11:10	Finished importing database.
+03.01.2016 21:11:10	A summary of the import was saved to the following location: C:\Users\Sergey\Documents\Visual Studio 2015\Projects\EasyBot\EasyBot.DB\Import Schema Logs\EasyBot.DB_20160103060906.log
+03.01.2016 21:11:10	Click Finish to continue...

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/custom")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container body-content">
+        <header>
+            @Html.Partial("_Header")
+        </header>
+        @Html.Partial("_MainMenu")
+        <div class="row">
+            <div class="col-md-12 heading">
+                <h1></h1>
+            </div>
+            <aside class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">@ViewBag.RightPanelTitle</div>
+                    <div class="panel-body">
+                        @RenderSection("rightpanel", required: false)
+                    </div>
+                </div>
+            </aside>
+            <section class="col-md-9">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+    <footer>
+        @Html.Partial("_Footer")
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
